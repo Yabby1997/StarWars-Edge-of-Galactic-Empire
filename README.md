@@ -17,7 +17,7 @@ Beat all the evil Galactic empire fighters and achieve victory.
 
 + Move : arrow keys
 + Fire Blaster : space-bar
-+ Use Force(slow down game speed) : "B" key(consumes force)
++ Slow down : "B" key(consumes force)
 
 + PW : blaster upgrade item
 + SP : X-wing speed up item
