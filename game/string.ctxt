@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=string
+comment1.params=speed
+comment1.target=void\ move(int)
+comment2.params=y
+comment2.target=void\ fade(int)
+comment3.params=y
+comment3.target=void\ fix(int)
+numComments=4

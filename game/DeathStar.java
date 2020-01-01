@@ -1,0 +1,152 @@
+import greenfoot.*;
+
+public class DeathStar extends Enemy
+{
+    public int hp = 15000;
+    public int firetimer = 0;
+    public int movetimer = 0;
+    public int tietimer = 0;
+    public int spreadtimer = 0;
+    public int lifetime = 0;
+    
+    public void act() 
+    {
+        if(lifetime < 2500){
+            fire();
+            lifetime ++;
+        }
+        if(lifetime >= 2500 && lifetime < 4000){
+            spread();
+            lifetime ++;
+        }
+        if(lifetime == 4000){
+            lifetime = 0;
+        } 
+        mover();
+        spawnSD(1000);
+        hit();
+    }
+    
+    public void mover(){
+        int xpos = this.getX();
+        int ypos = this.getY();    
+        if(movetimer < 80){
+            xpos ++;
+            movetimer ++;
+        }
+        else if(movetimer >= 80){
+            xpos --;
+            movetimer ++;
+        }
+        if(movetimer == 160){
+            movetimer = 0;
+        }
+       
+        setLocation(xpos, ypos);
+    }
+    
+    public void spawnSD(int delay){
+        if(tietimer == 0){
+            getWorld().addObject(new starDestroyer(), Greenfoot.getRandomNumber(360), this.getY());
+            tietimer ++;
+        }
+        else{
+            tietimer++;
+        }
+        if(tietimer == delay){
+            tietimer = 0;
+        }         
+    }     
+    
+     public void die(){
+        spawnItem();
+        scoreSet(10000);
+        forceSet(3000);        
+        getWorld().addObject(new Explosion(), this.getX(), this.getY());
+        getWorld().removeObject(this);
+        Greenfoot.playSound("Explosion60.wav");     
+    }
+
+    public void hit(){
+        if(isTouching(xBlaster.class)){
+            removeTouching(xBlaster.class);
+            this.hp -= Xwing.damage;
+            Greenfoot.playSound("laserhit.wav");
+            scoreSet(Xwing.damage);
+        }
+        
+        if(this.hp <= 0){
+            die();
+        }
+    }        
+    
+    public void spawnItem(){
+        if(Greenfoot.getRandomNumber(100) >= 90){
+            getWorld().addObject(new power(), this.getX(), this.getY());
+        }
+        if(Greenfoot.getRandomNumber(100) >= 95){
+            getWorld().addObject(new speed(), this.getX(), this.getY());
+        }        
+    }
+    
+    private void fire(){
+        if(firetimer == 20){
+            tBlaster blaster1 = new tBlaster();
+            tBlaster blaster2 = new tBlaster();
+            tBlaster blaster3 = new tBlaster();
+            tBlaster blaster4 = new tBlaster();
+            tBlaster blaster5 = new tBlaster();
+            tBlaster blaster6 = new tBlaster();
+            tBlaster blaster7 = new tBlaster();
+            tBlaster blaster8 = new tBlaster();
+            tBlaster blaster9 = new tBlaster();
+            tBlaster blaster10 = new tBlaster();
+            tBlaster blaster11 = new tBlaster();
+            tBlaster blaster12 = new tBlaster();
+            tBlaster blaster13 = new tBlaster();
+            
+            getWorld().addObject(blaster1, this.getX()-120, this.getY());
+            getWorld().addObject(blaster2, this.getX()-90, this.getY());
+            getWorld().addObject(blaster3, this.getX()-80, this.getY());
+            getWorld().addObject(blaster4, this.getX()-70, this.getY());
+            getWorld().addObject(blaster5, this.getX()-40, this.getY());
+            getWorld().addObject(blaster6, this.getX()-10, this.getY());
+            getWorld().addObject(blaster7, this.getX(), this.getY());
+            getWorld().addObject(blaster8, this.getX()+10, this.getY());
+            getWorld().addObject(blaster9, this.getX()+40, this.getY());
+            getWorld().addObject(blaster10, this.getX()+70, this.getY());
+            getWorld().addObject(blaster11, this.getX()+80, this.getY());
+            getWorld().addObject(blaster12, this.getX()+90, this.getY());
+            getWorld().addObject(blaster13, this.getX()+120, this.getY());
+            
+            firetimer++;
+        }
+        else{
+           firetimer++;
+        }
+        if(firetimer == 30){
+           firetimer = 0;
+        }
+    }
+    public void spread(){
+        ball b1 = new ball();
+        ball2 b2 = new ball2();
+        ball b3 = new ball();
+        ball2 b4 = new ball2();
+        
+        if(spreadtimer == 0){
+            getWorld().addObject(b1, this.getX()-20, this.getY());
+            getWorld().addObject(b2, this.getX()+20, this.getY());
+            getWorld().addObject(b3, this.getX()-50, this.getY());
+            getWorld().addObject(b4, this.getX()+50, this.getY());
+            spreadtimer++;
+        }
+        if(spreadtimer == 20){
+            spreadtimer = 0;
+        }
+        else{
+            spreadtimer ++;
+        }
+    }    
+}
+

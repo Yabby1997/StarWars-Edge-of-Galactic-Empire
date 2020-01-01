@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=world1
+comment1.params=
+comment1.target=world1()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=delay
+comment3.target=void\ spawnTie(int)
+comment4.params=delay
+comment4.target=void\ spawnSD(int)
+comment5.params=delay
+comment5.target=void\ spawnTie2(int)
+comment6.params=
+comment6.target=void\ spawnTieSquad()
+comment7.params=
+comment7.target=Score\ getScore()
+comment8.params=
+comment8.target=Force\ getForce()
+comment9.params=
+comment9.target=void\ stopMusic()
+numComments=10

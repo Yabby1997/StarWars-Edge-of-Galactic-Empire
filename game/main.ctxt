@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=main
+comment1.params=amount
+comment1.target=void\ scoreSet(int)
+comment2.params=amount
+comment2.target=void\ forceSet(int)
+numComments=3

@@ -1,0 +1,80 @@
+import greenfoot.*;
+
+public class Tiefighter extends Enemy
+{
+    private int speed = 1;
+    public int hp = 120;
+    public int timer = 0;
+    
+    public void act() 
+    {
+        mover();
+        hit();
+        fire();
+    }
+    
+    public void mover(){
+        int xpos = this.getX();
+        int ypos = this.getY();    
+        
+        ypos += speed;
+        
+        setLocation(xpos, ypos);
+        
+        if(ypos == 640){
+            setLocation(xpos, 5);
+        }
+    }
+    
+     public void die(){
+        spawnPower();
+        getWorld().addObject(new Explosion(), this.getX(), this.getY());
+        getWorld().removeObject(this);
+        Greenfoot.playSound("explosion.wav");        
+    }
+
+    public void hit(){
+        if(isTouching(xBlaster.class)){
+            removeTouching(xBlaster.class);
+            this.hp -= xBlasterwing.damage;
+            Greenfoot.playSound("laserhit.wav");
+            
+            World W = getWorld();
+            MyWorld myWorld = (MyWorld) W;
+            Score score = myWorld.getScore();
+                
+            score.hitScore();
+        }
+        if(isTouching(Ionpursemissile.class)){
+            removeTouching(Ionpursemissile.class);
+            this.hp -= Ionpursemissile.damage;
+        }
+
+        if(this.hp <= 0){
+            die();
+        }
+    }        
+    
+    public void spawnPower(){
+        if(Greenfoot.getRandomNumber(100) >= 90){
+            getWorld().addObject(new power(), this.getX(), this.getY());
+        }
+    }
+    
+    private void fire(){
+        if(timer == 50){
+            tBlaster blaster1 = new tBlaster();
+            tBlaster blaster2 = new tBlaster();
+            getWorld().addObject(blaster1, this.getX()+10, this.getY());
+            getWorld().addObject(blaster2, this.getX()-10, this.getY());
+            timer++;
+        }
+        else{
+            timer++;
+        }
+        if(timer == 100){
+            timer = 0;
+        }
+    }
+}
+
