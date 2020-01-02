@@ -1,4 +1,4 @@
-# StarWars : Edge of Galactic Empire
+# 🕹 StarWars : Edge of Galactic Empire
 
 ### Description
 This is the first game I made as term project for ***Computer Programming 1*** Lecture (Fall, 2016). So notice that this codes are not well organized 😂
