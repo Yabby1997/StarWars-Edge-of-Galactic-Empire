@@ -1,4 +1,4 @@
-# StarWars : Edge of Galactic Empire
+# 🕹 StarWars : Edge of Galactic Empire
 
 ### Description
 This is the first game I made as term project for ***Computer Programming 1*** Lecture (Fall, 2016). So notice that this codes are not well organized 😂
@@ -11,6 +11,7 @@ Greenfoot is very simplified version of game engine for teaching object oriented
 ### Contents
 + game folder : includes all of sources and musics, images.
 + StarWars-Edge-of-Galactic-Empire-master.jar : jar file to run game
++ Presentation-KOR : presentation material written in Korean
 
 ### Instruction
 Beat all the evil Galactic empire fighters and achieve victory.
